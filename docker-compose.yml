@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: root
 
   rails:
-    image: manologcode/rails260
+    image: manologcode/rails251
     restart: always
     container_name: rails_app
     command: bundle exec rails s -e production -b '0.0.0.0'
