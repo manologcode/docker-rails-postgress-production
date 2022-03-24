@@ -20,13 +20,13 @@ jobs:
       - name: build the image rails242
         run: |
           docker buildx build --push \
-            -f Dockerfile_rails --build-arg RUBY_VERSION=2.4.2 \
-            --tag manologcode/rails242:latest \
+            -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.0 \
+            --tag manologcode/rails260:latest \
             --platform linux/amd64,linux/arm64,linux/arm/v7 .
       - name: build the image
         run: |
           docker buildx build --push \
             -f Dockerfile_nginx --build-arg NGINX_VERSION=1.17.3 \
-            --tag manologcode/ngnix_rails:latest \
+            --tag manologcode/ngnix117_rails:latest \
             --platform linux/amd64,linux/arm64,linux/arm/v7 .
 

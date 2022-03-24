@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: root
 
   rails:
-    image: manologcode/rails242
+    image: manologcode/rails260
     restart: always
     container_name: rails_app
     command: bundle exec rails s -e production -b '0.0.0.0'
@@ -26,12 +26,12 @@ services:
     tty: true
 
   web:
-    image: manologcode/ngnix_rails
+    image: manologcode/ngnix117_rails
     restart: always
     container_name: nginx_app
     volumes:
       - /home/pi/app/web:/app
-    port:
+    ports:
       - 80:80
     depends_on:
       - rails

@@ -13,6 +13,12 @@ los paso a seguir
     rsync -avzh -e ssh web/ pi@192.168.1.180:~/ejemplo/web
 
 
+### construir una imagen de docker de rails
+
+docker build . -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.3 -t manologcode/rails263
+
+
+
 ### instalar las gemas
 
 ```
@@ -79,3 +85,12 @@ RAILS_ENV=production rails db:seed
 RAILS_ENV=production rails assets:precompile
 
 ```
+
+## Docker build
+
+para forzar y crear alguno de los contenedores manualmente podemos crearlos:
+
+docker build --no-cache -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.0  --pull . -t manologcode/rails260:latest
+
+docker build --no-cache -f Dockerfile_nginx --build-arg NGINX_VERSION=1.17.3  --pull . -t manologcode/ngnix117_rails:latest
+
