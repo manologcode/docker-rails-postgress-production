@@ -1,8 +1,14 @@
 # DOCKER RUBY ON RAILS PARA RASPBERRY PI
 
+otra forma
+
+https://semaphoreci.com/community/tutorials/dockerizing-a-ruby-on-rails-application
+
+
+
 Conjunto de contenedores para subir una aplicacion de Ruby On Rails a produccion. A un servidor o en una rapsberry pi, la imagen se compilada para las plataformas de linux/amd64,linux/arm64,linux/arm/v7.
 
-Se compone de tres contenedores, Postgres 12.2, Ruby 2.6 y Ngnix 1.17, orquestado por docker-compose
+Se compone de tres contenedores, Postgres 12.2, Ruby 2.7 y Ngnix 1.17, orquestado por docker-compose
 
 los paso a seguir
 

@@ -17,16 +17,16 @@ jobs:
           version: latest
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: build the image rails242
+      - name: build the image rails276
         run: |
           docker buildx build --push \
-            -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.0 \
-            --tag manologcode/rails260:latest \
+            -f Dockerfile_rails --build-arg RUBY_VERSION=2.7.6 \
+            --tag manologcode/rails276:latest \
             --platform linux/amd64,linux/arm64,linux/arm/v7 .
-      - name: build the image
+      - name: build the image ngnix117_rails
         run: |
           docker buildx build --push \
-            -f Dockerfile_nginx --build-arg NGINX_VERSION=1.17.3 \
+            -f Dockerfile_nginx --build-arg NGINX_VERSION=1.17.6 \
             --tag manologcode/ngnix117_rails:latest \
             --platform linux/amd64,linux/arm64,linux/arm/v7 .
 
