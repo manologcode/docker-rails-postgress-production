@@ -23,6 +23,12 @@ jobs:
             -f Dockerfile_rails --build-arg RUBY_VERSION=2.7.6 \
             --tag manologcode/rails276:latest \
             --platform linux/amd64,linux/arm64,linux/arm/v7 .
+      - name: build the image rails276-dev
+        run: |
+          docker buildx build --push \
+            -f Dockerfile_rails_dev --build-arg RUBY_VERSION=2.7.6 \
+            --tag manologcode/rails276dev:latest \
+            --platform linux/amd64 .
       - name: build the image ngnix117_rails
         run: |
           docker buildx build --push \

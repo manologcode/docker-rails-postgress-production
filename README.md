@@ -21,14 +21,15 @@ los paso a seguir
 
 ### construir una imagen de docker de rails
 
-docker build . -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.3 -t manologcode/rails263
+para construir la imagen manualmente
 
+docker build . -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.3 -t manologcode/rails276
 
 
 ### instalar las gemas
 
 ```
-docker run -it --rm --name rails_app -v $PWD/web:/app -v $PWD/_bundle:/usr/local/bundle manologcode/rails260 bundle install --without development test
+docker run -it --rm --name rails_app -v $PWD/web:/app -v $PWD/_bundle:/usr/local/bundle manologcode/rails276 bundle install --without development test
 
 ```
 
@@ -37,7 +38,7 @@ docker run -it --rm --name rails_app -v $PWD/web:/app -v $PWD/_bundle:/usr/local
 corre el contenedor de rails run bash
 
 ```
-docker run -it --rm --name rails_app -e RAILS_ENV=production -v $PWD/web:/app -v $PWD/_bundle:/usr/local/bundle manologcode/rails260 bash
+docker run -it --rm --name rails_app -e RAILS_ENV=production -v $PWD/web:/app -v $PWD/_bundle:/usr/local/bundle manologcode/rails276 bash
 
 ```
 
@@ -96,7 +97,18 @@ RAILS_ENV=production rails assets:precompile
 
 para forzar y crear alguno de los contenedores manualmente podemos crearlos:
 
-docker build --no-cache -f Dockerfile_rails --build-arg RUBY_VERSION=2.6.0  --pull . -t manologcode/rails260:latest
+docker build --no-cache -f Dockerfile_rails --build-arg RUBY_VERSION=2.7.6  --pull . -t manologcode/rails276:latest
 
 docker build --no-cache -f Dockerfile_nginx --build-arg NGINX_VERSION=1.17.3  --pull . -t manologcode/ngnix117_rails:latest
 
+## usar en docker compose las imagenes 
+
+imagen en produccion
+
+  rails:
+    image: manologcode/rails276
+
+imagen en desarrollo
+
+  rails:
+    image: manologcode/rails276dev
